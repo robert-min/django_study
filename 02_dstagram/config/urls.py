@@ -15,8 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('photo.urls')),
 ]
+
+# 실제 이미지 작업할 때는 X => 이미지 서버를 사용해야 함.
+# Debug 모드 일 때 - static 사용
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# 실제 작업은 미디어 파일 서버를 별도로 두고 사용한 후 웹서버에 별도로 서버 설정을 해야 함.

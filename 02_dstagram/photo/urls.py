@@ -8,7 +8,7 @@ app_name = "photo"
 urlpatterns = [
     # class형은 as_view, 함수형은 바로 사용
     path('', photo_list, name="photo_list"),
-    # path('detail/<int:pk>/', DetailView.as_view(model=Photo, template_name="photo/detail.html", name="photo_detail")),
+    path('detail/<int:pk>/', DetailView.as_view(model=Photo, template_name="photo/detail.html"), name="photo_detail"),
     path('upload/', PhotoUploadView.as_view(), name="photo_upload"),
     path('delete/<int:pk>/', PhotoDeleteView.as_view(), name="photo_delete"),
     path('update/<int:pk>/', PhotoUpdateView.as_view(), name="photo_update"),
